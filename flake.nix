@@ -45,6 +45,8 @@
           nil
           stylua
           luajitPackages.luacheck
+          go
+          gopls
           nvim-dev
         ];
         shellHook = ''
