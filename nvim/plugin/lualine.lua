@@ -40,7 +40,7 @@ require('lualine').setup {
     },
   },
   options = {
-    theme = 'auto',
+    theme = 'catppuccin',
   },
   -- Example top tabline configuration (this may clash with other plugins)
   -- tabline = {

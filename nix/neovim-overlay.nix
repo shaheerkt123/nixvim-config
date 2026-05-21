@@ -56,12 +56,15 @@ with final.pkgs.lib; let
     # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
     # ^ telescope and extensions
     # UI
+    catppuccin-nvim # Catppuccin theme | https://github.com/catppuccin/nvim
+    nvim-colorizer-lua # Color highlighter | https://github.com/norcalli/nvim-colorizer.lua
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     nvim-treesitter-context # nvim-treesitter-context
     # ^ UI
     # language support
+    nvim-lint # https://github.com/mfussenegger/nvim-lint
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -88,6 +91,7 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
+    luajitPackages.luacheck
     nil # nix LSP
     gopls
     go
