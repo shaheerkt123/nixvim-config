@@ -38,6 +38,7 @@ opt.cmdheight = 0
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 opt.colorcolumn = '100'
+opt.clipboard = 'unnamedplus'
 
 -- Configure Neovim diagnostic messages
 

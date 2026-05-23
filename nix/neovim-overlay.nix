@@ -100,6 +100,8 @@ with final.pkgs.lib; let
     gotestsum
     gomodifytags
     impl
+    wl-clipboard
+    # xclip
   ];
 in {
   # This is the neovim derivation
