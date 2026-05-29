@@ -3,6 +3,18 @@ if vim.g.did_load_treesitter_plugin then
 end
 vim.g.did_load_treesitter_plugin = true
 
+local status, configs = pcall(require, 'nvim-treesitter.configs')
+if status then
+  configs.setup {
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
+    },
+  }
+end
+
 -- nvim-treesitter-textobjects
 
 -- select

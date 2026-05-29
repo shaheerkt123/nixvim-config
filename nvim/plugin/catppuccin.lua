@@ -38,6 +38,7 @@ require('catppuccin').setup {
     notify = true,
     mini = true,
     treesitter = true,
+    lualine = true,
     native_lsp = {
       enabled = true,
       virtual_text = {

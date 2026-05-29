@@ -17,7 +17,8 @@ local root_files = {
   '.git',
 }
 
-local root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]) or vim.fn.getcwd()
+local root_file = vim.fs.find(root_files, { upward = true })[1]
+local root_dir = root_file and vim.fs.dirname(root_file) or vim.fn.getcwd()
 
 vim.lsp.start {
   name = 'gopls',
@@ -36,6 +37,10 @@ vim.lsp.start {
       gofumpt = true,
       completeUnimported = true,
       usePlaceholders = true,
+      deepCompletion = true,
+      matcher = 'Fuzzy',
+      diagnosticsDelay = '500ms',
+      symbolMatcher = 'FastFuzzy',
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,

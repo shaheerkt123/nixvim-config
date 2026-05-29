@@ -27,6 +27,14 @@ local function extra_mode_status()
   return ''
 end
 
+local lualine_theme = 'auto'
+local ok, catppuccin_lualine = pcall(require, 'lualine.themes.catppuccin-nvim')
+if ok then
+  lualine_theme = catppuccin_lualine
+elseif pcall(require, 'lualine.themes.catppuccin-mocha') then
+  lualine_theme = 'catppuccin-mocha'
+end
+
 require('lualine').setup {
   globalstatus = true,
   sections = {
@@ -40,7 +48,7 @@ require('lualine').setup {
     },
   },
   options = {
-    theme = 'catppuccin',
+    theme = lualine_theme,
   },
   -- Example top tabline configuration (this may clash with other plugins)
   -- tabline = {

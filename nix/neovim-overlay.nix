@@ -12,7 +12,10 @@ with final.pkgs.lib; let
 
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
-  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  pkgs-locked = import inputs.nixpkgs {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config.allowUnfree = true;
+  };
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
@@ -68,13 +71,14 @@ with final.pkgs.lib; let
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
-    eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
+    (mkNvimPlugin inputs.eyeliner-nvim "eyeliner-nvim") # https://github.com/jinh0/eyeliner.nvim
     # ^ navigation/editing enhancement plugins
     # Useful utilities
     nvim-unception # Prevent nested neovim sessions | nvim-unception
+    nvim-autopairs # https://github.com/windwp/nvim-autopairs
     # ^ Useful utilities
     # libraries that other plugins depend on
     sqlite-lua

@@ -18,11 +18,10 @@ local root_files = {
   '.git',
 }
 
+local root_file = vim.fs.find(root_files, { upward = true })[1]
+local root_dir = root_file and vim.fs.dirname(root_file) or vim.fn.getcwd()
+
 vim.lsp.start {
-  name = 'luals',
-  cmd = { lua_ls_cmd },
-  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-  capabilities = require('user.lsp').make_client_capabilities(),
   settings = {
     Lua = {
       runtime = {
